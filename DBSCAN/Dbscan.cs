@@ -13,18 +13,6 @@ namespace DBSCAN
         private readonly TMetricType _epsilon;
         private readonly int _minNeighbors;
 
-        private class ClusterPoint
-        {
-            public readonly TPointType Point;
-            public int Cluster;
-
-            public ClusterPoint(TPointType point)
-            {
-                Point = point;
-                Cluster = Undefined;
-            }
-        }
-
         public Dbscan(Func<TPointType, TPointType, TMetricType> distFunc, TMetricType epsilon, int minNeighbors)
         {
             _distFunc = distFunc;
@@ -59,7 +47,6 @@ namespace DBSCAN
                 currentPoint.Cluster = currentCluster;
                 neighbors.Remove(currentPoint);
 
-                // Propagate to neighbors and neighbors' neighbors
                 for (var j = 0; j < neighbors.Count; ++j)
                 {
                     var qLabel = neighbors[j];
@@ -70,10 +57,7 @@ namespace DBSCAN
 
                     qLabel.Cluster = currentCluster;
                     var qNeighbors = RangeQuery(pts, qLabel);
-                    if (qNeighbors.Count >= _minNeighbors)
-                    {
-                        neighbors.AddRange(qNeighbors);
-                    }
+                    if (qNeighbors.Count >= _minNeighbors) neighbors.AddRange(qNeighbors);
                 }
 
                 currentCluster += 1;
@@ -94,15 +78,24 @@ namespace DBSCAN
             foreach (var p in clustered)
             {
                 var cluster = p.Cluster;
-                if (!dic.ContainsKey(cluster))
-                {
-                    dic[cluster] = new List<TPointType>();
-                }
+                if (!dic.ContainsKey(cluster)) dic[cluster] = new List<TPointType>();
 
                 dic[cluster].Add(p.Point);
             }
 
             return dic;
+        }
+
+        private class ClusterPoint
+        {
+            public readonly TPointType Point;
+            public int Cluster;
+
+            public ClusterPoint(TPointType point)
+            {
+                Point = point;
+                Cluster = Undefined;
+            }
         }
     }
 }

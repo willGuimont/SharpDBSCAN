@@ -1,8 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBSCAN", "DBSCAN\DBSCAN.csproj", "{7D1290CF-68C5-4F71-9A29-8337B6A15CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{73670215-2058-41E1-A01F-51EE98BF2F56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D1290CF-68C5-4F71-9A29-8337B6A15CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1290CF-68C5-4F71-9A29-8337B6A15CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1290CF-68C5-4F71-9A29-8337B6A15CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1290CF-68C5-4F71-9A29-8337B6A15CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73670215-2058-41E1-A01F-51EE98BF2F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73670215-2058-41E1-A01F-51EE98BF2F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73670215-2058-41E1-A01F-51EE98BF2F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73670215-2058-41E1-A01F-51EE98BF2F56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
